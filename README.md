@@ -14,13 +14,13 @@ EasyAudioPlayerは、Dartで書かれた使いやすいオーディオプレー�
 ```yaml
 dependencies:
   audioplayers: ^latest_version
-  your_music_player_package: ^latest_version
+  easy_audio_player_package: ^latest_version
 ```
 
 ## 基本的な使い方
 ### 初期設定
 ```dart
-import 'package:your_music_player_package/music_player.dart';
+import 'package:easy_audio_player_package/easy_audio_player.dart';
 
 // 音楽リストの作成
 final musicList = [
@@ -146,7 +146,6 @@ final customList = musicCreator.generateMusicList(paths, names);
 - `RANDOM`: ランダムな曲へ
 
 ### Index
-
 プレイリスト内の現在の位置を管理するヘルパークラス。インデックスの増加、減少、ランダム選択をサポート。
 
 ## 実装詳細
