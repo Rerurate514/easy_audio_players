@@ -42,8 +42,8 @@ class Index{
   }
 }
 
-class MusicPlayer{
-  MusicPlayer._();
+class EasyAudioPlayers{
+  EasyAudioPlayers._();
 
   final _player = _AudioPlayerManager();
 
@@ -63,25 +63,25 @@ class MusicPlayer{
 
   bool get isMusicFirstPlayExecuted => _player.isMusicFirstPlayExecuted;
 
-  factory MusicPlayer.setMusicList(
+  factory EasyAudioPlayers.setMusicList(
     List<Music> musicList, 
     [String listName = "",
     Function()? reRenderUICallback]){
 
-    final ins = MusicPlayer._();
+    final ins = EasyAudioPlayers._();
     ins._setMusicList(musicList, listName);
     ins._setReRenderUICallback(reRenderUICallback);
 
     return ins;
   }
 
-  factory MusicPlayer.getEmptyInstance(){
-    final ins = MusicPlayer._();
+  factory EasyAudioPlayers.getEmptyInstance(){
+    final ins = EasyAudioPlayers._();
     return ins;
   }
 
-  factory MusicPlayer.getInstanceWithReRender(Function() reRenderUICallback){
-    final ins = MusicPlayer._();
+  factory EasyAudioPlayers.getInstanceWithReRender(Function() reRenderUICallback){
+    final ins = EasyAudioPlayers._();
     ins._setReRenderUICallback(reRenderUICallback);
     return ins;
   }
