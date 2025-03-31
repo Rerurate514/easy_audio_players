@@ -14,13 +14,13 @@ EasyAudioPlayerは、Dartで書かれた使いやすいオーディオプレー�
 ```yaml
 dependencies:
   audioplayers: ^latest_version
-  easy_audio_player_package: ^latest_version
+  easy_audio_players_with_track_package: ^latest_version
 ```
 
 ## 基本的な使い方
 ### 初期設定
 ```dart
-import 'package:easy_audio_player_package/easy_audio_player.dart';
+import 'package:easy_audio_players_with_track_package/easy_audio_players_with_track.dart';
 
 // 音楽リストの作成
 final musicList = [

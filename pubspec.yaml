@@ -1,4 +1,4 @@
-name: easy_audio_players
+name: easy_audio_players_with_track
 description: "A Flutter package that simplifies audio playback management with features like play, pause, resume, and playlist management. Supports normal, loop, and shuffle playback modes with seamless transitions between tracks and volume control."
 version: 0.0.1
 homepage: https://github.com/Rerurate514/easy_audio_players
