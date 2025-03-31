@@ -1,5 +1,5 @@
-# MusicPlayer Package
-MusicPlayerは、Dartで書かれた使いやすいオーディオプレーヤーライブラリです。このパッケージは`audioplayers`をベースに構築され、音楽再生の管理を簡素化し、様々な再生モードと遷移オプションを提供します。
+# EasyAudioPlayer Package
+EasyAudioPlayerは、Dartで書かれた使いやすいオーディオプレーヤーライブラリです。このパッケージは`audioplayers`をベースに構築され、音楽再生の管理を簡素化し、様々な再生モードと遷移オプションを提供します。
 
 ## 特徴
 - 🎵 シンプルな音楽再生コントロール（再生、一時停止、再開、シーク）
@@ -29,8 +29,8 @@ final musicList = [
   Music(name: "曲3", path: "/path/to/song3.mp3", volume: 50),
 ];
 
-// MusicPlayerのインスタンス作成
-final musicPlayer = MusicPlayer.setMusicList(
+// EasyAudioPlayerのインスタンス作成
+final player = EasyAudioPlayer.setMusicList(
   musicList, 
   "マイプレイリスト",
   () => setState(() {}), // UIを更新するためのコールバック
@@ -40,74 +40,74 @@ final musicPlayer = MusicPlayer.setMusicList(
 ### 再生コントロール
 ```dart
 // 特定のインデックスから再生開始
-musicPlayer.start(0); // 最初の曲から再生開始
+player.start(0); // 最初の曲から再生開始
 
 // 一時停止
-musicPlayer.pause();
+player.pause();
 
 // 再開
-musicPlayer.resume();
+player.resume();
 
 // 特定の位置にシーク（秒単位）
-musicPlayer.seek(30.0); // 30秒の位置にシーク
+player.seek(30.0); // 30秒の位置にシーク
 ```
 
 ### 音楽モードの切り替え
 ```dart
 // 再生モードの切り替え（NORMAL -> LOOP -> SHUFFLE -> NORMAL）
-musicPlayer.toggleMusicMode();
+player.toggleMusicMode();
 
 // 現在の再生モードの取得
-MusicMode currentMode = musicPlayer.musicMode;
+MusicMode currentMode = player.musicMode;
 ```
 
 ### 音量制御
 ```dart
 // 音量変更（0-100の範囲）
-musicPlayer.changeVolume(75); // 音量を75%に設定
+player.changeVolume(75); // 音量を75%に設定
 
 // 現在の音量を取得
-int volume = musicPlayer.nowVolume;
+int volume = player.nowVolume;
 ```
 
 ### プレイリストナビゲーション
 ```dart
 // 次の曲へ
-musicPlayer.moveMusicList(Transition.NEXT);
+player.moveMusicList(Transition.NEXT);
 
 // 前の曲へ
-musicPlayer.moveMusicList(Transition.PREVIOUS);
+player.moveMusicList(Transition.PREVIOUS);
 
 // ランダムな曲へ
-musicPlayer.moveMusicList(Transition.RANDOM);
+player.moveMusicList(Transition.RANDOM);
 ```
 
 ### 再生状態と情報の取得
 ```dart
 // 現在再生中かどうか
-bool isPlaying = musicPlayer.isPlaying;
+bool isPlaying = player.isPlaying;
 
 // 現在の再生位置（秒）
-double currentPosition = musicPlayer.currentSeconds;
+double currentPosition = player.currentSeconds;
 
 // 現在の曲の長さ（秒）
-double duration = musicPlayer.durationSeconds;
+double duration = player.durationSeconds;
 
 // 現在再生中の曲
-Music currentTrack = musicPlayer.currentMusic;
+Music currentTrack = player.currentMusic;
 
 // プレイリスト名
-String playlistName = musicPlayer.listName;
+String playlistName = player.listName;
 ```
 
 ## 高度な使い方
 ### 異なるインスタンスの作成方法
 ```dart
 // 空のインスタンス
-final emptyPlayer = MusicPlayer.getEmptyInstance();
+final emptyPlayer = EasyAudioPlayer.getEmptyInstance();
 
 // 再レンダリングコールバック付きのインスタンス
-final playerWithCallback = MusicPlayer.getInstanceWithReRender(() {
+final playerWithCallback = EasyAudioPlayer.getInstanceWithReRender(() {
   // UIを更新するコード
   setState(() {});
 });
@@ -127,7 +127,7 @@ final customList = musicCreator.generateMusicList(paths, names);
 ```
 
 ## 主要クラスの概要
-### MusicPlayer
+### EasyAudioPlayer
 アプリケーションからのメインインターフェース。音楽再生の管理とコントロールを提供します。
 
 ### Music
@@ -152,7 +152,7 @@ final customList = musicCreator.generateMusicList(paths, names);
 ## 実装詳細
 このパッケージは内部で`AudioPlayer`クラスをラップし、シングルトンパターンを使用して音楽再生を管理します。主な実装は以下の通りです：
 
-- `MusicPlayer`: パブリックAPI
+- `EasyAudioPlayer`: パブリックAPI
 - `_AudioPlayerManager`: 内部シングルトンインスタンス
 - `MusicModeSetter`: 再生モードの変更ロジック
 - `_CurrentListenerResistry`: 現在の再生位置の監視
@@ -165,13 +165,13 @@ final customList = musicCreator.generateMusicList(paths, names);
 
 ## 例：Flutterウィジェットでの使用
 ```dart
-class MusicPlayerWidget extends StatefulWidget {
+class EasyAudioPlayerWidget extends StatefulWidget {
   @override
-  _MusicPlayerWidgetState createState() => _MusicPlayerWidgetState();
+  _EasyAudioPlayerWidgetState createState() => _EasyAudioPlayerWidgetState();
 }
 
-class _MusicPlayerWidgetState extends State<MusicPlayerWidget> {
-  late MusicPlayer _player;
+class _EasyAudioPlayerWidgetState extends State<EasyAudioPlayerWidget> {
+  late EasyAudioPlayer _player;
   
   @override
   void initState() {
@@ -184,7 +184,7 @@ class _MusicPlayerWidgetState extends State<MusicPlayerWidget> {
     ];
     
     // プレーヤーの初期化
-    _player = MusicPlayer.setMusicList(
+    _player = EasyAudioPlayer.setMusicList(
       musicList, 
       "マイプレイリスト",
       () => setState(() {}), // UI更新のコールバック
